@@ -1,6 +1,12 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
-<head th:insert="~{index :: #copy-head}"></head>
+<head th:insert="~{index :: #copy-head}">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            console.log("Hello Java");
+        })
+    </script>
+</head>
 <header th:insert="~{index :: #copy-header}"></header>
 <div id="templatemo_content_wrapper">
 
