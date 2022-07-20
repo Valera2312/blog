@@ -1,13 +1,24 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:insert="~{index :: #copy-head}">
-    <script type="text/javascript">
-        $(document).ready(function () {
-            console.log("Hello Java");
-        })
-    </script>
+
 </head>
 <header th:insert="~{index :: #copy-header}"></header>
+<script>
+    var id = [[${id}]];
+    function add(){
+
+        $.ajax({
+            url: "CommentsAdd",
+            data: {"id":id },
+            type: "post",
+            success: function(data){
+                console.log(data)
+            }
+        })
+    }
+
+</script>
 <div id="templatemo_content_wrapper">
 
 	<div id="templatemo_content">
@@ -146,7 +157,7 @@
                 <div id="comment_form">
                     <h3>Leave A Comment</h3>
                     
-                    <form action="#" method="post">
+                    <form>
                         <div class="form_row">
                             <label>Name ( Required )</label><br />
                             <input type="text" name="name" />
@@ -160,7 +171,7 @@
                             <textarea  name="comment" rows="" cols=""></textarea>
                         </div>
 
-                        <input type="submit" name="Submit" value="Submit" class="submit_btn" />
+                        <input type="button" name="Submit" value="Submit" class="submit_btn" onclick="add()" />
                     </form>
                     
                 </div>
@@ -253,5 +264,7 @@
 	<div class="cleaner"></div>
 </div> <!-- end of content wrapper -->
 <div th:insert="~{index :: #templatemo_footer_wrapper}"></div>
+
 </body>
+
 </html>

@@ -29,7 +29,8 @@ public class Controller {
         return "portfolio";
     }
     @RequestMapping(path = "/blog_post")
-    public String blog_post(@RequestParam("id") Long id )  {
+    public String blog_post(@RequestParam("id") Long id ,Model model)  {
+        model.addAttribute("id",id);
         return "blog_post";
     }
 }
