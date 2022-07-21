@@ -15,6 +15,7 @@ public class CommentsController {
     @RequestMapping(value = {"CommentsAdd"}, method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody List<Comment> add(@RequestParam("id")Long id){
 
+        commentsRepo.save();
         //commentsRepo.save(new Comment());
         return commentsRepo.findByAndArticleId(id);
     }

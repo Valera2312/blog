@@ -11,4 +11,5 @@ public interface CommentsRepo extends CrudRepository<Comment,Long> {
 
     @Query("select e from Comment e where e.articleId = :id")
     List<Comment> findByAndArticleId(@Param("id") Long id);
+    
 }
