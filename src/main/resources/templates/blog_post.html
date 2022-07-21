@@ -5,15 +5,28 @@
 </head>
 <header th:insert="~{index :: #copy-header}"></header>
 <script>
-    var id = [[${id}]]; //переменная id страницы из thymeleaf
-    function add(){
+    $(document).ready(function() {
+        /** начнёт работу тогда, когда будет готов DOM, за исключением картинок **/
 
+// ваш код
+    });
+
+    function add(){
+        var Articleid = [[${id}]]; //переменная id страницы из thymeleaf
+        var name = $("#name").val();
+        var email = $("#email").val();
+        var comment = $("#comment").val();
+        var date = new Date().toLocaleString();
         $.ajax({
             url: "CommentsAdd",
-            data: {"id":id },
+            data: {"ArticleId":Articleid,"name": name,
+                    "email":email, "comment":comment,
+                     "date":date },
             type: "post",
             success: function(data){
-                console.log(data)
+                $.each(data, function(index, comment){
+                        console.log(comment);
+                })
             }
         })
     }
@@ -160,15 +173,15 @@
                     <form>
                         <div class="form_row">
                             <label>Name ( Required )</label><br />
-                            <input type="text" name="name" />
+                            <input type="text" name="name" id="name" />
                         </div>
                         <div class="form_row">
                             <label>Email  ( Required, will not be published )</label><br />
-                            <input type="text" name="name" />
+                            <input type="text" name="email" id="email" />
                         </div>
                         <div class="form_row">
                             <label>Your comment</label><br />
-                            <textarea  name="comment" rows="" cols=""></textarea>
+                            <textarea  name="comment" rows="" cols="" id="comment"></textarea>
                         </div>
 
                         <input type="button" name="Submit" value="Submit" class="submit_btn" onclick="add()" />

@@ -10,6 +10,14 @@ public class Comment {
     @Column(name = "id", nullable = false)
     private Long id;
 
+    public Comment(String name, String eMail, String content, String date, Long articleId) {
+        this.name = name;
+        this.eMail = eMail;
+        this.content = content;
+        this.date = date;
+        this.articleId = articleId;
+    }
+
     @Column(name = "name", nullable = false, length = 100)
     private String name;
 
@@ -25,6 +33,10 @@ public class Comment {
 
     @Column(name = "article_id", nullable = false)
     private Long articleId;
+
+    public Comment() {
+
+    }
 
     public Long getArticleId() {
         return articleId;
