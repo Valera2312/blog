@@ -15,17 +15,20 @@
         var Articleid = [[${id}]]; //переменная id страницы из thymeleaf
         var name = $("#name").val();
         var email = $("#email").val();
-        var comment = $("#comment").val();
+        var content = $("#content").val();
         var date = new Date().toLocaleString();
         $.ajax({
             url: "CommentsAdd",
             data: {"ArticleId":Articleid,"name": name,
-                    "email":email, "comment":comment,
+                    "email":email, "content":content,
                      "date":date },
             type: "post",
             success: function(data){
                 $.each(data, function(index, comment){
-                        console.log(comment);
+                    console.log(comment);
+                    $('#comments').append(
+                        '<li>' + comment.content + '</li>'
+                    );
                 })
             }
         })
@@ -55,7 +58,7 @@
             </div>
             
             <div id="comment_section">
-                <ol class="comments first_level">
+                <ol class="comments first_level" id="comments">
                         
                         <li>
                             <div class="comment_box commentbox1">
@@ -181,7 +184,7 @@
                         </div>
                         <div class="form_row">
                             <label>Your comment</label><br />
-                            <textarea  name="comment" rows="" cols="" id="comment"></textarea>
+                            <textarea  name="content" rows="" cols="" id="content"></textarea>
                         </div>
 
                         <input type="button" name="Submit" value="Submit" class="submit_btn" onclick="add()" />

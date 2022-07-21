@@ -16,10 +16,9 @@ public class CommentsControllerAjax {
     public @ResponseBody List<Comment> add(@RequestParam("ArticleId") Long ArticleId,
                                             @RequestParam("name")   String name,
                                             @RequestParam("email")   String email,
-                                            @RequestParam("comment") String content,
+                                            @RequestParam("content") String content,
                                             @RequestParam("date") String date )
     {
-
        // commentsRepo.save();
         Comment comment = new Comment();
         comment.setArticleId(ArticleId);
