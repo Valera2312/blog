@@ -23,6 +23,19 @@ public class Article {
     @Column(name = "date", length = 30)
     private String date;
 
+    @Column(name = "category", length = 30)
+    private String category;
+
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+
     public String getDate() {
         return date;
     }

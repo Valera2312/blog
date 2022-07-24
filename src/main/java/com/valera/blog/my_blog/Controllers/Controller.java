@@ -4,6 +4,7 @@ import com.valera.blog.my_blog.Models.Article;
 import com.valera.blog.my_blog.Repository.ArticleRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -28,8 +29,8 @@ public class Controller {
         model.addAttribute("isPortfolio", isPortfolio);
         return "portfolio";
     }
-    @RequestMapping(path = "/blog_post")
-    public String blog_post(@RequestParam("id") Long id ,Model model)  {
+    @RequestMapping(path = "/blog_post/{id}")
+    public String blog_post(@PathVariable  Long id , Model model)  {
         model.addAttribute("id",id);
         return "blog_post";
     }

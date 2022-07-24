@@ -58,7 +58,7 @@
                 <p>Credits go to <a href="" target="_blank">free photos</a> and <a href="" target="_blank">Smashing Magazine</a>. Ut nec vestibulum odio. Vivamus vitae nibh eu sem malesuada rutrum et sit amet magna. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Praesent aliquam velit a magna sodales quis elementum ipsum auctor. Ut at metus leo, et dictum sem.</p>
 
                      <div class="cleaner"></div>
-                    <div class="category">Tags: <a href="#">Freebies</a>, <a href="#">Templates</a></div> <div class="button float_r"><a href="blog_post.html" class="more">Read more</a></div>
+                    <div class="category">Tags: <a href="#">Freebies</a>, <a href="#">Templates</a></div> <div class="button float_r"><a th:href="@{/blog_post/{id}(id=${article.getId()})}"  class="more">Read more</a></div>
                     <div class="cleaner"></div>
 
           </div>

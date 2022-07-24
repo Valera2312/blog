@@ -12,7 +12,7 @@ public class CommentsControllerAjax {
     @Autowired
     CommentsRepo commentsRepo;
 
-    @RequestMapping(value = {"CommentsAdd"}, method = RequestMethod.POST, produces = "application/json")
+    @RequestMapping(value = {"blog_post/CommentsAdd"}, method = RequestMethod.POST, produces = "application/json")
     public @ResponseBody List<Comment> add(@RequestParam("ArticleId") Long ArticleId,
                                             @RequestParam("name")   String name,
                                             @RequestParam("email")   String email,
