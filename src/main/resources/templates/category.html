@@ -44,12 +44,9 @@
 <body>
 <div id="templatemo_main_wrapper">
     <div id="templatemo_content_wrapper">
+        <div id="templatemo_content">
+          <div th:each="article: ${allArticlesById}" class="post_section"><span class="bottom"></span>
 
-        <div id="templatemo_content"  th:with="articles = ${allArticles}?  ${allArticles}  : ${articlesById}">
-
-            <div th:each="article:${articles}"  class="post_section">
-
-              <span class="bottom"></span>
                     <span class="comment"><a href="blog_post.html">45</a></span>
 
                     <h2 th:text="${article.getTitle()}"><a href="blog_post.html"></a></h2>
@@ -62,8 +59,10 @@
                      <div class="cleaner"></div>
                     <div class="category">Tags: <a href="#">Freebies</a>, <a href="#">Templates</a></div> <div class="button float_r"><a th:href="@{/blog_post/{id}(id=${article.getId()})}"  class="more">Read more</a></div>
                     <div class="cleaner"></div>
+
           </div>
 
+        <div class="cleaner_h40"><!-- a spacing between 2 posts --></div>
     
   </div>
 

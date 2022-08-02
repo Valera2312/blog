@@ -1,6 +1,6 @@
 package com.valera.blog.my_blog.Controllers;
 
-import com.valera.blog.my_blog.Comment;
+import com.valera.blog.my_blog.Models.Comment;
 import com.valera.blog.my_blog.Repository.CommentsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package com.valera.blog.my_blog.Repository;
 
-import com.valera.blog.my_blog.Comment;
+import com.valera.blog.my_blog.Models.Comment;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;

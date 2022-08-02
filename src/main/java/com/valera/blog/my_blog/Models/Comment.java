@@ -1,4 +1,4 @@
-package com.valera.blog.my_blog;
+package com.valera.blog.my_blog.Models;
 
 import javax.persistence.*;
 
