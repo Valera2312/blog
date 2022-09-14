@@ -3,16 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <!-- CSS only -->
+    <link rel="stylesheet" href="/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Блог программиста</title>
+
 </head>
-<body>
+<body style="height: 3000px">
     <div th:fragment="header">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
                 <a class="navbar-brand" href="#">Блог Java Программиста</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,13 +33,61 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Action</a>
                             </div>
+
                         </li>
                     </ul>
                 </div>
                 <form class="d-flex float-right">
                     <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
                 </form>
+            </div>
+        </nav>
+    </div>
+    <div class="container" style="margin-top: 100px">
+        <div class="row">
+            <div class="col-md-8 ">
+                <h3 class="navbar-brand"> Последние записи</h3>
+                <th:block th:each = "article : ${allArticles}">
+                    <div class="jumbotron  ">
+                        <img width="20" height="20" src="/img/user.png">
+                        <i th:text ="${article.getAuthor()}"></i>
+                        <img width="20" height="20" src="/img/calendar.png">
+                        <i th:text ="${article.getDate()}"></i>
+                        <div>
+                            <a th:text ="${article.getTitle()}" href="#" class="lead text-decoration-none"></a>
+                            <!--                        <p class="lead"></p>-->
+                        </div>
+
+
+                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-primary me-md-2" type="button">Читать полностью >></button>
+
+                        </div>
+                        <hr class="hr-dashed">
+                    </div>
+                </th:block>
+            </div>
+            <div class="col-md-4 " >
+                <div class="col-md-12" style="position:fixed; max-width: 22%">
+                    <h3 class="navbar-brand"  >Категории</h3>
+                    <div class="bs-component">
+                        <div class="list-group">
+
+                            <th:block th:each="category : ${allCategories}">
+                                <a  th:text="${category.getName()}"
+                                                               class="list-group-item list-group-item-action"
+                                                               href="#"></a>
+                            </th:block>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <nav class="fixed-bottom navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <p class="navbar-brand fst-italic"> Блог программиста </p>
             </div>
         </nav>
     </div>
