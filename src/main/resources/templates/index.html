@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+<head th:fragment="head">
     <meta charset="UTF-8">
     <!-- CSS only -->
     <link rel="stylesheet" href="/style.css">
@@ -14,17 +14,19 @@
 </head>
 <body style="height: 3000px">
     <div th:fragment="header">
-        <nav class="fixed-top navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar fixed-top justify-content-between navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <a class="navbar-brand" href="#">Блог Java Программиста</a>
+                <a class="navbar-brand" style="margin-bottom: 2px; " href="#">Блог Java Программиста</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarContent">
-                    <ul class="navbar-nav mr-auto mb-2">
-
+                    <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="#">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">GitHub</a>
                         </li>
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -33,15 +35,14 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="#">Action</a>
                             </div>
-
                         </li>
                     </ul>
                 </div>
-                <form class="d-flex float-right">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-                </form>
             </div>
+            <form class="form-inline d-flex my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </nav>
     </div>
     <div class="container" style="margin-top: 100px">
@@ -49,10 +50,10 @@
             <div class="col-md-8 ">
                 <h3 class="navbar-brand"> Последние записи</h3>
                 <th:block th:each = "article : ${allArticles}">
-                    <div class="jumbotron  ">
-                        <img width="20" height="20" src="/img/user.png">
+                    <div class="jumbotron">
+                        <img class="mb-2" width="20" height="20" src="/img/user.png">
                         <i th:text ="${article.getAuthor()}"></i>
-                        <img width="20" height="20" src="/img/calendar.png">
+                        <img class="mb-2" width="20" height="20" src="/img/calendar.png">
                         <i th:text ="${article.getDate()}"></i>
                         <div>
                             <a th:text ="${article.getTitle()}" href="#" class="lead text-decoration-none"></a>
@@ -60,34 +61,66 @@
                         </div>
 
 
-                        <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+                        <p th:text = "${article.getDescribe()}"></p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" type="button">Читать полностью >></button>
+                            <a th:href="@{/article/{id}(id=${article.getId()})}" class="btn btn-primary me-md-2" type="button">Читать полностью >></a>
 
                         </div>
                         <hr class="hr-dashed">
                     </div>
                 </th:block>
             </div>
-            <div class="col-md-4 " >
-                <div class="col-md-12" style="position:fixed; max-width: 22%">
-                    <h3 class="navbar-brand"  >Категории</h3>
-                    <div class="bs-component">
-                        <div class="list-group">
+            <div class="col-md-4" th:fragment="right-column">
+                <div class="col-md-12 " style="position:fixed; margin-left: 12px; max-width: 22%">
+                    <div>
+                        <img class="float-start" width="20" height="20" src="/img/category.png">
+                        <h3 class="navbar-brand">&nbspКатегории</h3>
+                        <div class="bs-component">
+                            <div class="list-group">
 
-                            <th:block th:each="category : ${allCategories}">
-                                <a  th:text="${category.getName()}"
-                                                               class="list-group-item list-group-item-action"
-                                                               href="#"></a>
-                            </th:block>
+                                <th:block th:each="category : ${allCategories}">
+                                    <a  th:text="${category.getName()}"
+                                        class="list-group-item list-group-item-action"
+                                        href="#"></a>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="mt-3">
+                        <img class="float-start" width="20" height="20" src="/img/trending.png">
+                        <h3 class="navbar-brand">&nbspПопулярные cтатьи</h3>
+                        <div class="bs-component">
+                            <div class="list-group">
+
+                                <th:block th:each="category : ${allCategories}">
+                                    <a  th:text="${category.getName()}"
+                                        class="list-group-item list-group-item-action"
+                                        href="#"></a>
+                                </th:block>
+                            </div>
+                        </div>
+                    </div>
+                    <div  class="mt-3">
+                        <img class="float-start" width="20" height="20" src="/img/tag.png">
+                        <h3 class="navbar-brand">&nbspОблако тегов</h3>
+                        <div class="container ">
+                            <div class="row">
+                                <div class="col">
+                                    Column
+                                </div>
+                                <div class="col">
+                                    Column
+                                </div>
+
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <nav class="fixed-bottom navbar navbar-expand-lg navbar-light bg-light">
+        <nav th:fragment="footer" class="fixed-bottom navbar navbar-expand-lg navbar-light bg-light">
             <div class="container">
-                <p class="navbar-brand fst-italic"> Блог программиста </p>
+                <p class="navbar-brand fst-italic"> Блог программиста : Spring, JavaCore, Maven </p>
             </div>
         </nav>
     </div>

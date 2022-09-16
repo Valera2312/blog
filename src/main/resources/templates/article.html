@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:insert="index.html :: head">
+    <title>Title</title>
+</head>
+<body style="height: 3000px">
+    <head th:insert="index.html :: header">
+    <div class="container" style="margin-top: 100px">
+        <div class="row">
+            <div class="col-md-8">
+                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="#">Главная</a></li>
+                        <li th:text = "${articleById.getCategory().getName()}" class="breadcrumb-item active" aria-current="page"></li>
+                    </ol>
+                </nav>
+            </div>
+            <div class="col-md-4" th:insert="index.html :: right-column">
+            </div>
+        </div>
+        <nav th:insert="index.html :: footer">
+        </nav>
+    </div>
+</body>
+</html>

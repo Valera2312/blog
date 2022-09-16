@@ -3,14 +3,14 @@ package com.valera.blog.my_blog.Models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "CATEGORIES")
+@Table(name = "category")
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID", nullable = false)
+    @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "NAME", nullable = false, length = 40)
+    @Column(name = "name", nullable = false, length = 40)
     private String name;
 
     public Long getId() {

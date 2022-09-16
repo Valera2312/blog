@@ -23,16 +23,28 @@ public class Article {
     @Column(name = "date", length = 30)
     private String date;
 
-    @Column(name = "category", length = 30)
-    private Long category;
-
-
-    public Long getCategory() {
+    public Category getCategory() {
         return category;
     }
 
-    public void setCategory(Long category) {
+    public void setCategory(Category category) {
         this.category = category;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="category_id", nullable=false)
+    private Category category;
+
+
+    @Column(name = "describing", length = 100)
+    private String describe;
+
+    public String getDescribe() {
+        return describe;
+    }
+
+    public void setDescribe(String describe) {
+        this.describe = describe;
     }
 
 

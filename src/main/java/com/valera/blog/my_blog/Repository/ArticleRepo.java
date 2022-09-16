@@ -10,6 +10,9 @@ import java.util.List;
 @Repository
 public interface ArticleRepo extends CrudRepository<Article,Long> {
     List<Article> findAll();
-    @Query("select a from Article a where a.category = :id")
-    List<Article> findArticleByCategory(@Param("id") Long id);
+    @Query( value = "SELECT * FROM article WHERE category_id = :id",nativeQuery = true)
+    Article findArticleByCategory(@Param("id") Long id);
+
+    @Query(value = "SELECT * FROM article ORDER BY ID DESC LIMIT 5", nativeQuery = true)
+    List<Article> findLast5Articles();
 }
